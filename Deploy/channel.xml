@@ -1,0 +1,15 @@
+
+	<channel-adaptor name='clientsimulator-adaptor'
+    class="org.jpos.q2.iso.ChannelAdaptor" 
+    logger="Q2">
+		 <channel class="org.jpos.iso.channel.PostChannel" logger="Q2"
+		       packager="com.Iserveu.atmswitch.packager.EuroPackager">
+			    <property name="host" value="127.0.0.1" />
+			    <property name="port" value="7001" />
+<!-- 		    <property name="timeout" value="180000"/>
+				<property name="keep-alive" value="true" />-->	
+		 </channel>
+		 <in>jpos-send</in>
+		 <out>jpos-receive</out>
+		 <reconnect-delay>100000</reconnect-delay>
+	</channel-adaptor>

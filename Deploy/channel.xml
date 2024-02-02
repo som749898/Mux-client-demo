@@ -2,13 +2,25 @@
 	<channel-adaptor name='clientsimulator-adaptor'
     class="org.jpos.q2.iso.ChannelAdaptor" 
     logger="Q2">
-		 <channel class="org.jpos.iso.channel.PostChannel" logger="Q2"
-		       packager="com.Iserveu.atmswitch.packager.EuroPackager">
+		  <channel class="org.jpos.iso.channel.XMLChannel"
+				packager="org.jpos.iso.packager.XMLPackager" logger="Q2">
 			    <property name="host" value="127.0.0.1" />
 			    <property name="port" value="7001" />
-<!-- 		    <property name="timeout" value="180000"/>
-				<property name="keep-alive" value="true" />-->	
+		    	<property name="timeout" value="180000"/>
+				<property name="keep-alive" value="true" />
 		 </channel>
+		 <!-- 172.16.4.54 -->
+		 <!-- <channel name="jcard.channel"
+			class="org.jpos.iso.channel.CSChannel"
+			packager="org.jpos.iso.packager.GenericPackager" logger="Q2">
+			<property name="packager-config" value="cfg/jcard.xml" /> 
+			<property name="timeout" value="300000" /> 
+		</channel> -->
+			<!-- <channel name="xml.channel"
+				class="org.jpos.iso.channel.XMLChannel"
+				packager="org.jpos.iso.packager.XMLPackager" type="server" logger="Q2"
+				realm="xml-server-8001">
+			</channel>  -->
 		 <in>jpos-send</in>
 		 <out>jpos-receive</out>
 		 <reconnect-delay>100000</reconnect-delay>

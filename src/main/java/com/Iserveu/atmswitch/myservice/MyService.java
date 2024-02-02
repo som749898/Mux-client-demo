@@ -1,5 +1,6 @@
 package com.Iserveu.atmswitch.myservice;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Year;
@@ -7,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+import org.jpos.iso.ISOAmount;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.MUX;
@@ -62,7 +64,7 @@ public class MyService {
 //            return "";
 //        }
 
-	
+		ISOAmount amount = new ISOAmount(4, 356, new BigDecimal("100.00"));
 		
 		
 		LocalDateTime now = LocalDateTime.now();
@@ -75,22 +77,25 @@ public class MyService {
         
         ISOMsg request = new ISOMsg();
         request.setMTI("0200"); // Example MTI
-        request.set(2, "1199911115002245");
+//        request.set(2, "8018376458721922"); // 1252678762482566
+        request.set(2, "1834561968188160");
         request.set(3, "010000");
         request.set(4, "000000010000");
+//        request.set(amount);
 	    request.set(7, formattedDateTime);
 	    request.set(11, stan);
-//	    request.set(11, "149249");
+//	    request.set(11, "333098");
 	    request.set(12, getCurrentTime);
-	    request.set(18, "742");
+	    request.set(18, "780");
 	    request.set(19, "356");
 	    request.set(22, "051");
 	    request.set(23, "001");
 	    request.set(25, "00");
 	    request.set(32, "222222");
-	    request.set(35, "1199911115002245=28106202880000000000");
+//	    request.set(35, "8018376458721922=25126202110000000000");
+	    request.set(35, "1834561968188160=27016202240000000000");
 	    request.set(37, rrn+stan);
-//	    request.set(37, "329417149249");
+//	    request.set(37, "335516333098");
 	    request.set(41, "TEST1234");
 	    request.set(42, "111111111111111");
 	    request.set(43, "RuPay CP Board  MUMBAI  MHIN");
@@ -99,7 +104,7 @@ public class MyService {
 //	    request.set(55, "9F02060000010800009F2608ED57BD45B0AF39539F2701809F10200FB501A0000004000000000000000000000000000000000000000000000000009F370484C227B99F3602000C950504000480009A032303149C01005F2A020356820219009F1A0203569F03060000000000009F330360F8C89F34034203009F3501229F1E0830373031383731388407A00000052410109F090200029F4104000000019B02E8009F1208444F4D45535449439F1B04000000005008444F4D45535449435F3401015F201A444542415348495348205341424154202020202020202020202F");
     	request.set(70, "001");
     	
-        ISOMsg response = mux.request(request, 30000); // 30-second timeout
+        ISOMsg response = mux.request(request, 3000000); // 30-second timeout
 
         // Process the response
         System.out.println(response);

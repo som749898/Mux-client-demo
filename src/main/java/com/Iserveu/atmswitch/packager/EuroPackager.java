@@ -35,7 +35,7 @@ public class EuroPackager extends ISOBasePackager {
     /*001*/ new IFB_BITMAP  ( 16, "BIT MAP"),
     /*002*/ new IFA_LLNUM   ( 19, "PAN - PRIMARY ACCOUNT NUMBER"),
     /*003*/ new IFA_NUMERIC (  6, "PROCESSING CODE"),
-    /*004*/ new IFA_NUMERIC ( 12, "AMOUNT, TRANSACTION"),
+    /*004*/ new IFA_NUMERIC ( 16, "AMOUNT, TRANSACTION"),
     /*005*/ new IFA_NUMERIC ( 12, "AMOUNT, SETTLEMENT"),
     /*006*/ new IFA_NUMERIC ( 12, "AMOUNT, CARDHOLDER BILLING"),
     /*007*/ new IFA_NUMERIC ( 10, "TRANSMISSION DATE AND TIME"),
